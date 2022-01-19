@@ -30,7 +30,7 @@ def get_args():
 	description="""A simple dictionary tool that copies value to clipboard based off of a key.""",
 	epilog="Regardless of order, options are always processed in this order: Config, Add, List, Get, Delete. Only the last occurrence of a duplicate option is used.")
 	
-	parser.add_argument("-a", "--add", nargs=2,
+	parser.add_argument("-a", "--add", nargs="*",
 		default=None,
 		metavar=("KEY", "VALUE"),
 		dest="key_value",
@@ -78,11 +78,12 @@ def dict_as_list(dic, sort=False):
 	for k in dic:
 		sz = max(sz, len(k))
 
-	if sort: dic = sorted(dic)
+	if sort:
+		dic = dict(sorted(dic.items()))
 	
 	s = []
-	for k in dic:
-		s.append(f" {k}:{' ' * (1 + sz - len(k))}{dic[k]}")
+	for k, v in dic.items():
+		s.append(f" {k}:{' ' * (1 + sz - len(k))}{v}")
 
 	return s
 
@@ -154,7 +155,7 @@ def main():
 	if args.key_value:
 		if not (meta["readonly"] or meta["no-add"]):
 			k = args.key_value[0]
-			v = args.key_value[1]
+			v = "" if len(args.key_value) < 2 else ' '.join(args.key_value[1:])
 			if not (k in srcdict and meta["no-overwrite"]):
 				srcdict[k] = v
 			else: warn("Configuration disallows overwriting.")
