@@ -3,7 +3,7 @@ import os
 import json
 import pyperclip
 
-config_location = "pymacro_config.json"
+config_location = "adictools_config.json"
 dict_base_location = "dictionaries"
 dict_ext = ".json"
 meta_ext = ".meta.json"
@@ -27,7 +27,7 @@ DEFAULT_META = {
 
 def get_args():
 	parser = argparse.ArgumentParser(
-	description="""A simple dictionary tool that copies value to clipboard based off of a key.""",
+	description="""A simple dictionary tool that copies value to clipboard or prints a value retrieved from a key.""",
 	epilog="Regardless of order, options are always processed in this order: Config, Add, List, Get, Delete. Only the last occurrence of a duplicate option is used.")
 	
 	parser.add_argument("-a", "--add", nargs="*",

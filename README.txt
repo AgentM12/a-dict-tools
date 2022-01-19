@@ -1,23 +1,23 @@
-pymacro is a very simple tool to access dictionaries via the command line.
+a-dict-tools is a very simple tool to manipulate dictionaries via the command line.
+This can be useful in scenarios where you want to keep a personal dictionary with quick look-ups for long strings of text.
 
  === CMDLINE OPTIONS ===
   -h, --help                                   Show this help message and exit
                                                e.g. `$ py adictools.py --help`
   KEY [VALUE ...]], --add [KEY [VALUE ...]]    Add a key-value pair to the selected dictionary
-                                               e.g. `$ py adictools.py -a name "George Clooney"`
+                                               e.g. `$ py adictools.py -a name George Clooney`
   -c KEY VALUE, --config KEY VALUE             Configure a key-value pair in the configuration or meta file for the selected dictionary
-                                               e.g. `$ py adictools.py --`
+                                               e.g. `$ py adictools.py --config readonly YES`
   -d KEY, --delete KEY                         Delete the specified key from the selected dictionary
-                                               e.g. `$ py adictools.py --`
+                                               e.g. `$ py adictools.py -d name`
   -g KEY, --get KEY                            Gets the specified key from the selected dictionary
-                                               e.g. `$ py adictools.py --`
+                                               e.g. `$ py adictools.py -g birthday`
   -l, --list                                   List all entries in the selected dictionary
-                                               e.g. `$ py adictools.py --`
-
+                                               e.g. `$ py adictools.py --list`
 
  === CONFIG / META ===
 
-/pymacro_config.json
+/adictools_config.json
 option                      type    default     description
 src                         str     "my_dict"   Points to the dictionary that is operated on.
 no-print-output             bool    False       Disables printing output to stdout.
